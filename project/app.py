@@ -37,7 +37,7 @@ def index():
 def login():
 
     redirect_uri = url_for('auth', _external=True)
-    print(f"Redirect URI: {redirect_uri}")  # Verifique a URI gerada
+    print(f"Redirect URI: {redirect_uri}")  
     return oauth.suap.authorize_redirect(redirect_uri)
 
 
@@ -56,7 +56,7 @@ def auth():
         session['suap_token'] = token
         return redirect(url_for('index'))
     except Exception as e:
-        print(f"Authorization error: {e}")  # Adicione para depuração
+        print(f"Authorization error: {e}")  
         return redirect(url_for('index'))
 
 @app.route("/profile")
