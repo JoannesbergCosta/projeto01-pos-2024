@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="boletim-container">
+        <h1>Boletim</h1>
+        <form method="POST">
+            <label for="ano">Ano:</label>
+            <input type="text" id="ano" name="ano" required>
+
+            <label for="semestre">Semestre:</label>
+            <input type="text" id="semestre" name="semestre" required>
+
+            <button type="submit">Buscar</button>
+        </form>
+
+        {% if boletim %}
+            <h2>Resultados:</h2>
+            <ul>
+                {% for disciplina in boletim %}
+                    <li>
+                        <strong>Disciplina:</strong> {{ disciplina.nome }}<br>
+                        <strong>Média:</strong> {{ disciplina.media }}
+                    </li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+    </div>
+</body>
+</html>

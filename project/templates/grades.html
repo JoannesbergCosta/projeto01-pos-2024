@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boletim</title>
+</head>
+<body>
+    <h1>Boletim de {{ year }}/{{ semester }}</h1>
+
+    {% if grades_data %}
+        <ul>
+            {% for grade in grades_data %}
+            <li>Disciplina: {{ grade['disciplina'] }} - Média: {{ grade['media_final'] }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Não há dados disponíveis.</p>
+    {% endif %}
+    
+    <form method="GET" action="{{ url_for('grades') }}">
+        <label for="year">Ano:</label>
+        <input type="text" name="school_year" id="year" value="{{ year }}">
+        
+        <label for="semester">Semestre:</label>
+        <input type="text" name="semester" id="semester" value="{{ semester }}">
+        
+        <button type="submit">Buscar</button>
+    </form>
+</body>
+</html>

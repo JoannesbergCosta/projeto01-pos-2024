@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+</head>
+<body>
+    <div class="profile-container">
+        <h1>Bem-vindo, {{ profile.nome }}</h1>
+        <img src="{{ profile.url_foto }}" alt="Foto de perfil">
+        <p><strong>Email:</strong> {{ profile.email }}</p>
+        <p><strong>Matrícula:</strong> {{ profile.matricula }}</p>
+        <a href="{{ url_for('boletim') }}">Ver Boletins</a>
+    </div>
+</body>
+</html>
