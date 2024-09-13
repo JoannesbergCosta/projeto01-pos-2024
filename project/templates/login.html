@@ -1,12 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-</head>
-<body>
-    <h1>Login no SUAP</h1>
-    <a href="{{ url_for('login') }}">Conectar ao SUAP</a>
-</body>
-</html>
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title text-center">Login no SUAP</h5>
+                <p class="text-center">Por favor, faça login para acessar seu perfil.</p>
+                <div class="d-grid">
+                    <a href="{{ url_for('login') }}" class="btn btn-primary btn-block">Login com SUAP</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
