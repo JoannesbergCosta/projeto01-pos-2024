@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perfil do Usuário</title>
+    <title>Página Inicial</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Perfil do Usuário</h1>
+        <h1 class="mb-4">Bem-vindo ao SUAP</h1>
         {% if profile_data %}
             <div class="card" style="width: 18rem;">
                 <img src="{{ profile_data.foto }}" class="card-img-top" alt="Foto do Perfil">
@@ -16,14 +16,13 @@
                     <h5 class="card-title">{{ profile_data.nome }}</h5>
                     <p class="card-text"><strong>Email:</strong> {{ profile_data.email }}</p>
                     <p class="card-text"><strong>Matricula:</strong> {{ profile_data.matricula }}</p>
+                    <a href="{{ url_for('profile') }}" class="btn btn-primary">Ver Perfil Completo</a>
                     <a href="{{ url_for('grades') }}" class="btn btn-secondary">Ver Boletim</a>
                     <a href="{{ url_for('logout') }}" class="btn btn-danger">Sair</a>
                 </div>
             </div>
         {% else %}
-            <div class="alert alert-danger" role="alert">
-                Dados do perfil não encontrados.
-            </div>
+            <a href="{{ url_for('login') }}" class="btn btn-primary">Faça login para continuar</a>
         {% endif %}
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

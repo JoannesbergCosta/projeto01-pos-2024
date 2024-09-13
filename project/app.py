@@ -72,9 +72,15 @@ def grades():
         semester = request.args.get("semester", 1)
         try:
             profile_data = suap.get("v2/minhas-informacoes/meus-dados")
-            grades_data = suap.get(f"v2/minhas-informacoes/boletim/{year}/{semester}/")
+            grades_response = suap.get(f"v2/minhas-informacoes/boletim/{year}/{semester}/")
+            grades_data = grades_response.json()
+            
+            
+            print(f"Profile Data: {profile_data.json()}")
+            print(f"Grades Data: {grades_data}")  
+            
             return render_template("grades.html",
-                                   grades_data=grades_data.json(),
+                                   grades_data=grades_data,
                                    profile_data=profile_data.json(),
                                    year=year,
                                    semester=semester)
@@ -83,6 +89,7 @@ def grades():
             return render_template("error.html", message="Erro ao obter boletim.")
     else:
         return redirect(url_for('index'))
+
 
 if __name__ == "__main__":
     app.run(debug=True)
