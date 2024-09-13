@@ -16,7 +16,7 @@ suap = oauth.register(
     access_token_url='https://suap.ifrn.edu.br/o/token/',
     authorize_url='https://suap.ifrn.edu.br/o/authorize/',
     fetch_token=lambda: session.get('suap_token'),
-    redirect_uri='http://localhost:5000/login/authorized'  # Defina isso explicitamente
+    redirect_uri='http://localhost:5000/login/authorized'  
 )
 
 @app.route("/")
@@ -34,7 +34,7 @@ def index():
 @app.route("/login")
 def login():
     redirect_uri = url_for('auth', _external=True)
-    print(f"Redirect URI: {redirect_uri}")  # Verifique a URI gerada
+    print(f"Redirect URI: {redirect_uri}")  
     return suap.authorize_redirect(redirect_uri)
 
 @app.route('/logout')
@@ -47,10 +47,10 @@ def auth():
     try:
         token = suap.authorize_access_token()
         session['suap_token'] = token
-        print(f"Access token: {token}")  # Debugging: Verificar se o token foi recebido
+        print(f"Access token: {token}") 
         return redirect(url_for('index'))
     except Exception as e:
-        print(f"Authorization error: {e}")  # Adicione para depuração
+        print(f"Authorization error: {e}")  
         return redirect(url_for('index'))
 
 @app.route("/profile")
