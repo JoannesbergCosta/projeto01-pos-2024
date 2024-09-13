@@ -5,12 +5,12 @@ from datetime import datetime
 app = Flask(__name__)
 app.secret_key = 'development'
 
-# Configuração do OAuth com o SUAP
+
 oauth = OAuth(app)
 suap = oauth.register(
     name='suap',
-    client_id='vV04soMv2j5Un5wSDLZs5iyYCl4o6yKkMvWKYV6x',
-    client_secret='6nUaWasxlafdsdFf9DtwuUcuXIAjaXWMdZCqhtDUPnoechzf8pRgZF4PBu06X2VNduxEb2oMKoZA3ttX0PP04guAq6h587iAI5rmWuYuSwPxsLZ8ufAdHjYYdZGJDlKX',
+    client_id='',
+    client_secret='',
     api_base_url='https://suap.ifrn.edu.br/api/',
     access_token_method='POST',
     access_token_url='https://suap.ifrn.edu.br/o/token/',
@@ -74,11 +74,11 @@ def grades():
             profile_data = suap.get("v2/minhas-informacoes/meus-dados")
             grades_response = suap.get(f"v2/minhas-informacoes/boletim/{year}/{semester}/")
             grades_data = grades_response.json()
-            
+
             
             print(f"Profile Data: {profile_data.json()}")
             print(f"Grades Data: {grades_data}")  
-            
+
             return render_template("grades.html",
                                    grades_data=grades_data,
                                    profile_data=profile_data.json(),

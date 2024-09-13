@@ -24,27 +24,35 @@
                 </div>
             </div>
         </form>
-        
+
         {% if grades_data %}
             <h2 class="mb-4">Notas para {{ year }} - Semestre {{ semester }}</h2>
             <table class="table table-bordered">
                 <thead>
                     <tr>
                         <th>Disciplina</th>
-                        <th>Nota</th>
-                        <th>Data</th> 
+                        <th>Nota Etapa 1</th>
+                        <th>Nota Etapa 2</th>
+                        <th>Nota Etapa 3</th>
+                        <th>Nota Etapa 4</th>
+                        <th>Média Final</th>
+                        <th>Situação</th>
                     </tr>
                 </thead>
                 <tbody>
                     {% for item in grades_data %}
                         <tr>
                             <td>{{ item.disciplina }}</td>
-                            <td>{{ item.nota }}</td>
-                            <td>{{ item.data }}</td> 
+                            <td>{{ item.nota_etapa_1.nota if item.nota_etapa_1.nota is not none else 'Não Disponível' }}</td>
+                            <td>{{ item.nota_etapa_2.nota if item.nota_etapa_2.nota is not none else 'Não Disponível' }}</td>
+                            <td>{{ item.nota_etapa_3.nota if item.nota_etapa_3.nota is not none else 'Não Disponível' }}</td>
+                            <td>{{ item.nota_etapa_4.nota if item.nota_etapa_4.nota is not none else 'Não Disponível' }}</td>
+                            <td>{{ item.media_final_disciplina }}</td>
+                            <td>{{ item.situacao }}</td>
                         </tr>
                     {% else %}
                         <tr>
-                            <td colspan="3" class="text-center">Nenhuma nota disponível.</td>
+                            <td colspan="7" class="text-center">Nenhuma nota disponível.</td>
                         </tr>
                     {% endfor %}
                 </tbody>
@@ -54,7 +62,7 @@
                 Sem dados disponíveis ou o formato dos dados está incorreto.
             </div>
         {% endif %}
-        
+
         <div class="mt-4">
             <a href="{{ url_for('profile') }}" class="btn btn-secondary">Voltar ao Perfil</a>
             <a href="{{ url_for('logout') }}" class="btn btn-danger">Sair</a>

@@ -5,23 +5,43 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Perfil do Usuário</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .profile-card {
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        .profile-card img {
+            border-radius: 50%;
+        }
+        .btn-custom {
+            background-color: #007bff;
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: #0056b3;
+            color: white;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
-        <h1 class="mb-4">Perfil do Usuário</h1>
+        <h1 class="text-center mb-4">Perfil do Usuário</h1>
         {% if profile_data %}
-            <div class="card" style="width: 18rem;">
-                <img src="{{ profile_data.foto }}" class="card-img-top" alt="Foto do Perfil">
-                <div class="card-body">
+            <div class="card profile-card shadow-sm">
+                <img src="{{ profile_data.foto }}" class="card-img-top img-fluid" alt="Foto do Perfil">
+                <div class="card-body text-center">
                     <h5 class="card-title">{{ profile_data.nome }}</h5>
                     <p class="card-text"><strong>Email:</strong> {{ profile_data.email }}</p>
-                    <p class="card-text"><strong>Matricula:</strong> {{ profile_data.matricula }}</p>
-                    <a href="{{ url_for('grades') }}" class="btn btn-secondary">Ver Boletim</a>
-                    <a href="{{ url_for('logout') }}" class="btn btn-danger">Sair</a>
+                    <p class="card-text"><strong>Matrícula:</strong> {{ profile_data.matricula }}</p>
+                    <div class="d-flex justify-content-center">
+                        <a href="{{ url_for('grades') }}" class="btn btn-custom mr-2">Ver Boletim</a>
+                        <a href="{{ url_for('logout') }}" class="btn btn-danger">Sair</a>
+                    </div>
                 </div>
             </div>
         {% else %}
-            <div class="alert alert-danger" role="alert">
+            <div class="alert alert-danger text-center" role="alert">
                 Dados do perfil não encontrados.
             </div>
         {% endif %}
