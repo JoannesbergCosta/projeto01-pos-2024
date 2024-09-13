@@ -3,6 +3,7 @@ from authlib.integrations.flask_client import OAuth
 from datetime import datetime
 
 app = Flask(__name__)
+app.debug = True    
 app.secret_key = 'development'
 
 
