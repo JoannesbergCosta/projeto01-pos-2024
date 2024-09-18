@@ -5,17 +5,40 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Página Inicial</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #3095fa;
+            font-family: 'Arial', sans-serif;
+        }
+        .card {
+            transition: transform 0.2s;
+        }
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            color: #ffffff;
+        }
+        .btn {
+            margin: 5px;
+        }
+    </style>
 </head>
 <body>
     <div class="container mt-5">
         <h1 class="mb-4">Bem-vindo ao SUAP</h1>
         {% if profile_data %}
-            <div class="card" style="width: 18rem;">
-                <img src="{{ profile_data.foto }}" class="card-img-top" alt="Foto do Perfil">
+            <div class="card mx-auto mb-4" style="width: 18rem;">
+                <img src="{{ profile_data.url_foto_150x200 }}" class="card-img-top" alt="Foto do Perfil">
                 <div class="card-body">
                     <h5 class="card-title">{{ profile_data.nome }}</h5>
                     <p class="card-text"><strong>Email:</strong> {{ profile_data.email }}</p>
-                    <p class="card-text"><strong>Matricula:</strong> {{ profile_data.matricula }}</p>
+                    <p class="card-text"><strong>Matrícula:</strong> {{ profile_data.matricula }}</p>
                     <a href="{{ url_for('profile') }}" class="btn btn-primary">Ver Perfil Completo</a>
                     <a href="{{ url_for('grades') }}" class="btn btn-secondary">Ver Boletim</a>
                     <a href="{{ url_for('logout') }}" class="btn btn-danger">Sair</a>

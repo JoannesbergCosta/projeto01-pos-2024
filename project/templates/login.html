@@ -5,14 +5,38 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #3c99f5;
+        }
+        .card {
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        }
+        .card-title {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            transition: background-color 0.3s, border-color 0.3s;
+        }
+        .btn-primary:hover {
+            background-color: #0056b3;
+            border-color: #004085;
+        }
+        
+    </style>
 </head>
-<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+<body class="d-flex justify-content-center align-items-center vh-100">
     <div class="container">
-        <div class="card">
+        <div class="card p-4">
             <div class="card-body text-center">
                 <h1 class="card-title">Login</h1>
-                <p class="card-text">Você precisa fazer login para acessar o sistema.</p>
-                <a href="{{ url_for('login') }}" class="btn btn-primary">Login com SUAP</a>
+                <p class="card-text"><b>Você precisa fazer login para acessar o sistema.</b></p>
+                <a href="{{ url_for('login') }}" class="btn btn-primary btn-lg">Login com SUAP</a>
             </div>
         </div>
     </div>

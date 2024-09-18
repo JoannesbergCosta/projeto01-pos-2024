@@ -7,11 +7,11 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <style>
         .profile-card {
-            max-width: 400px;
+            max-width: 200px;
             margin: 0 auto;
         }
         .profile-card img {
-            border-radius: 50%;
+            border-radius: 150%;
         }
         .btn-custom {
             background-color: #007bff;
@@ -29,7 +29,7 @@
         <h1 class="text-center mb-4">Perfil do Usuário</h1>
         {% if profile_data %}
             <div class="card profile-card shadow-sm">
-                <img src="{{ profile_data.foto }}" class="card-img-top img-fluid" alt="Foto do Perfil">
+                <img src="{{ profile_data.url_foto_150x200 }}" class="card-img-top img-fluid" alt="Foto do Perfil">
                 <div class="card-body text-center">
                     <h5 class="card-title">{{ profile_data.nome }}</h5>
                     <p class="card-text"><strong>Email:</strong> {{ profile_data.email }}</p>
